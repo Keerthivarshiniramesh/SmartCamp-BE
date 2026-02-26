@@ -3,6 +3,10 @@ const cors = require('cors');
 const Mongoose = require('mongoose');
 const Session = require('express-session');
 const AuthRouter = require('./routes/AuthRouter');
+const DoctorRouter = require('./routes/DoctorRouter')
+const PatientRouter = require('./routes/PatientRouter')
+const PrescriptionRouter = require('./routes/PrescriptionRouter')
+const CampRouter = require('./routes/CampRouter')
 const MongoDbSession = require('connect-mongodb-session')(Session);
 require('dotenv').config();
 
@@ -42,3 +46,7 @@ app.use(Session({
 }))
 
 app.use(AuthRouter)
+app.use(DoctorRouter)
+app.use(PatientRouter)
+app.use(PrescriptionRouter)
+app.use(CampRouter)

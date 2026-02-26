@@ -5,10 +5,10 @@ const userSchema = mongoose.Schema({
     fullname: { type: String, required: true, trim: true },  
     email: { type: String, required: true, lowercase: true, trim: true, match: /^\S+@\S+\.\S+$/ },  
     contact: { type: Number, required: true, validate: { validator: v => /^\d{10}$/.test(v), message: 'Contact must be a 10-digit number.' } },  
-    role: {type: String, enum: ['admin', 'user'], required: true, default: 'user', lowercase: true},
+    role: {type: String, enum: ['admin', 'doctor', 'patient'], required: true, lowercase: true},
     password: {type: String, required: true}
 })
 
-const userModel = mongoose.model('template-users', userSchema)
+const userModel = mongoose.model('users', userSchema)
 
 module.exports = userModel

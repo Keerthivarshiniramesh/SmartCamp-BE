@@ -24,6 +24,7 @@ AuthRouter.post('/login', async (req, res) => {
         }
 
         req.session.user = {
+            _id: user._id,
             id: user.id,
             fullname: user.fullname,
             email: user.email,
@@ -49,7 +50,7 @@ AuthRouter.post('/login', async (req, res) => {
 
 AuthRouter.post('/register', async (req, res) => {
     try {
-        const { fullname, email, contact, password } = req.body
+        const { fullname, email, contact, password,role } = req.body
 
         if (!fullname || !email || !contact || !password) {
             return res.send({ success: false, message: 'Please provide all details!' })
@@ -74,7 +75,8 @@ AuthRouter.post('/register', async (req, res) => {
             fullname: fullname,
             email: email,
             contact: contact,
-            password: password
+            password: password,
+            role:role
         })
 
         const saveUser = await newUser.save()
@@ -82,6 +84,7 @@ AuthRouter.post('/register', async (req, res) => {
         if (saveUser) {
 
             req.session.user = {
+                _id: saveUser._id,
                 id: saveUser.id,
                 fullname: saveUser.fullname,
                 email: saveUser.email,
