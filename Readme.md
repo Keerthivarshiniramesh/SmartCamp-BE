@@ -1,3 +1,6 @@
-MongoDBURI=<mongodb uri>
-Port=4000
-SessionKey='Sk-Key'
+MongoDBURI = 
+SessionKey = DEV-Key
+Port = 4004
+
+MAIL_USER=
+MAIL_PASS=
