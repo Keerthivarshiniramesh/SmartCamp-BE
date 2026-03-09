@@ -1,14 +1,15 @@
 const nodemailer = require("nodemailer");
 
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS
-    }
-});
 
 exports.sendCampMail = async (to, name, camp) => {
+    const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASS
+        }
+    });
+
     await transporter.sendMail({
         from: `Health Camp <${process.env.MAIL_USER}>`,
         to,
@@ -28,3 +29,4 @@ exports.sendCampMail = async (to, name, camp) => {
         `
     });
 };
+

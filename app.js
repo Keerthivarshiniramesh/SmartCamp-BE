@@ -14,7 +14,7 @@ const app = Express();
 const port = process.env.Port || 4000;
 
 app.use(cors({
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:3000', 'http://localhost:3001'],
     credentials: true
 }));
 app.use(Express.json());
@@ -23,6 +23,7 @@ app.use(Express.urlencoded({ extended: true }));
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 })
+
 
 Mongoose.connect(process.env.MongoDBURI)
     .then(() => {

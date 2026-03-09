@@ -30,10 +30,10 @@ const createCamp = async (req, res) => {
 
         // Find patients in this location
         const patients = await Patient.find({
-            "location.village": village,
+            // "location.village": village,
             "location.city": city,
             "location.state": state,
-            "location.pincode": pincode
+            // "location.pincode": pincode
         }).populate("userId", "email fullname");
 
         // ================== SEND MAIL TO ALL ==================
